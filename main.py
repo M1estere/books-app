@@ -1,7 +1,10 @@
+# python main.py
+
 from models.library import Library
 
 
 def main_logic():
+    """Главная функция для взаимодействия с пользователем"""
     library = Library()
 
     while True:
@@ -22,8 +25,11 @@ def main_logic():
             library.add_book(title, author, year)
 
         elif choice == '2':
-            book_id = int(input("Введите ID книги для удаления: "))
-            library.remove_book(book_id)
+            try:
+                book_id = int(input("Введите ID книги для удаления: "))
+                library.remove_book(book_id)
+            except ValueError:
+                print("Ошибка: Введите корректный числовой ID")
 
         elif choice == '3':
             query = input("Введите название, автора или год для поиска: ")
@@ -32,22 +38,25 @@ def main_logic():
                 for book in results:
                     print(book)
             else:
-                print("Книги не найдены")
+                print("Книги не найдены.")
 
         elif choice == '4':
             library.display_books()
 
         elif choice == '5':
-            book_id = int(input("Введите ID книги для изменения статуса: "))
-            new_status = input("Введите новый статус ('в наличии' или 'выдана'): ")
-            library.change_status(book_id, new_status)
+            try:
+                book_id = int(input("Введите ID книги для изменения статуса: "))
+                new_status = input("Введите новый статус ('в наличии' или 'выдана'): ")
+                library.change_status(book_id, new_status)
+            except ValueError:
+                print("Ошибка: Введите корректный числовой ID")
 
         elif choice == '6':
-            print("Выход из программы.")
+            print("Выход из программы")
             break
 
         else:
-            print("Некорректный выбор. Попробуйте снова")
+            print("Ошибка: Некорректный выбор. Попробуйте снова")
 
 
 if __name__ == '__main__':
