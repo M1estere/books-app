@@ -5,5 +5,12 @@
         "author": "Test",
         "year": "1234",
         "status": "в наличии"
+    },
+    {
+        "id": 2,
+        "title": "Test 2",
+        "author": "Test 2",
+        "year": "2005",
+        "status": "в наличии"
     }
 ]
